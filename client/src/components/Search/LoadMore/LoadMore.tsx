@@ -4,6 +4,7 @@ import { LoadMoreButton } from '../../Buttons';
 
 interface LoadMoreProps {
   hidden: boolean;
+  handleLoadMore: () => void;
 }
 
 const StyledLoadMore = styled.div`
@@ -14,12 +15,8 @@ const StyledLoadMore = styled.div`
   height: 70px;
 `;
 
-const LoadMore: React.FC<LoadMoreProps> = ({ hidden }) => {
+const LoadMore: React.FC<LoadMoreProps> = ({ hidden, handleLoadMore }) => {
   const loading = false;
-
-  const handleLoadMore = () => {
-    console.log('laod more');
-  };
 
   if (hidden) {
     return <></>;

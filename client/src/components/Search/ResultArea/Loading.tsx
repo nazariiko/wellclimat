@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import Preloader from '../../Preloader';
 
 const StyledLoading = styled.div`
   position: absolute;
@@ -12,14 +13,14 @@ const StyledLoading = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.8);
   z-index: 10;
 `;
 
 const Loading = () => {
   return (
     <StyledLoading>
-      <div></div>
+      <Preloader />
     </StyledLoading>
   );
 };

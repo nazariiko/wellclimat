@@ -15,10 +15,8 @@ const App = () => {
     setData(response.data);
   };
 
-  console.log(data);
-
   React.useEffect(() => {
-    getData();
+    // getData();
   }, []);
 
   return (

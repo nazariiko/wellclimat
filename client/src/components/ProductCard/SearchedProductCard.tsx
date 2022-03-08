@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import ch1 from '../../assets/images/ch1.png';
+interface SearchedProductCardProps {
+  id: number;
+  name: string;
+  maxRoomArea: number;
+  imageUrl: string;
+  price: string;
+}
 
 const StyledSearchedProductCard = styled.div`
   padding: 10px;
@@ -22,6 +29,10 @@ const StyledSearchedProductCard = styled.div`
     .image-container {
       margin: 0 15px;
       margin-right: 25px;
+
+      img {
+        max-width: 60px;
+      }
     }
 
     .info-container {
@@ -59,18 +70,24 @@ const StyledSearchedProductCard = styled.div`
   }
 `;
 
-const SearchedProductCard = () => {
+const SearchedProductCard: React.FC<SearchedProductCardProps> = ({
+  id,
+  name,
+  maxRoomArea,
+  imageUrl,
+  price,
+}) => {
   return (
     <StyledSearchedProductCard>
-      <Link to="/">
+      <Link to={`/product/${id}`}>
         <div className="image-container">
-          <img src={ch1} alt="Cooper Hunter" />
+          <img src={imageUrl} alt="Cooper Hunter" />
         </div>
         <div className="info-container">
-          <h3 className="conditioner-name">Кондиціонер Cooper&Hunter СH-S07XN7SM </h3>
+          <h3 className="conditioner-name">{name}</h3>
           <div className="properties">
-            <span className="room-square">до 20м²</span>
-            <span className="price">12 360 грн.</span>
+            <span className="room-square">до {maxRoomArea}м²</span>
+            <span className="price">{price} грн.</span>
           </div>
         </div>
       </Link>

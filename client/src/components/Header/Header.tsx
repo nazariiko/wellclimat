@@ -7,10 +7,15 @@ import DesktopMenu from './Menu/DesktopMenu';
 const StyledHeader = styled.div`
   display: flex;
   align-items: center;
-  max-width: 1280px;
   height: 100px;
   padding: 0 40px;
   margin: 0 auto;
+  width: 100%;
+  z-index: 100000;
+  position: fixed;
+  top: 0;
+  background: #f8fafc;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.05);
 `;
 
 const StyledLogo = styled.div`

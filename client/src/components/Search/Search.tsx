@@ -14,11 +14,15 @@ const StyledSearch = styled.div`
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 15px;
+  position: absolute;
+  top: 0;
+  z-index: 50;
 `;
 
 const Search = () => {
   const [searchValue, setSearchValue] = React.useState('');
   const [isFocused, _setIsFocused] = React.useState(false);
+  const [pageNumber, setPageNumber] = React.useState(1);
 
   const searchContainerRef = React.useRef(null);
 
@@ -43,7 +47,12 @@ const Search = () => {
   const handleBlurInput = (e: any) => {
     if (isFocusedRef.current && !e.path.includes(searchContainerRef.current)) {
       setIsFocused(false);
+      setPageNumber(1);
     }
+  };
+
+  const handleLoadMore = () => {
+    setPageNumber(pageNumber + 1);
   };
 
   React.useEffect(() => {
@@ -57,8 +66,8 @@ const Search = () => {
         onChange={handleChangeSearchValue}
         onFocus={handleFocusInput}
       />
-      <ResultArea hidden={!isFocused} />
-      <LoadMore hidden={!isFocused} />
+      <ResultArea hidden={!isFocused} searchValue={searchValue} pageNumber={pageNumber} />
+      <LoadMore hidden={!isFocused} handleLoadMore={handleLoadMore} />
     </StyledSearch>
   );
 };
